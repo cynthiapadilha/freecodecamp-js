@@ -21,7 +21,14 @@ function cleanInputString(str) {
   const regex = /[+-\s]/g;
   return str.replace(regex, '');
 }
-
+// VERIFICA SE É NUMERO
 function isInvalidInput(str) {
-  const regex = /[0-9]e[0-9]/;
+  const regex = /\d+e\d+/i;
+  return str.match(regex);
+}
+function addEntry() {
+  const targetInputContainer = document.querySelector(`#${entryDropdown.value} .input-container`);
+  const entryNumber = targetInputContainer.querySelectorAll('input[type="text"]').length;
+  const HTMLString = `
+  <label "for = ">Entry ${entryNumber} Name</label>`;
 }
