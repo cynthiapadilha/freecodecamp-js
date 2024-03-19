@@ -79,23 +79,30 @@ const allSongs = [
 ];
 
 const audio = new Audio();
-
 let userData = {
-    songs: [...allSongs],
-    currentSong: null,
-    songCurrentTime: 0,
-  };
+  songs: [...allSongs],
+  currentSong: null,
+  songCurrentTime: 0,
+};
 
-  const playSong = (id) => {
-    const song = userData?.songs.find((song) => song.id === id);
-  
-  };
+const playSong = (id) => {
+  const song = userData?.songs.find((song) => song.id === id);
+  audio.src = song.src;
+  audio.title = song.title;
 
+  if (userData?.currentSong === null || userData?.currentSong.id !== song.id) {
+    audio.currentTime = 0;
+  } else {
+    audio.currentTime = userData?.songCurrentTime;
+  }
+  userData.currentSong = song;
+  playButton.classList.add("playing");
 
+  audio.play();
+};
 
-
-  const renderSongs = (array) => {
-    const songsHTML = array
+const renderSongs = (array) => {
+  const songsHTML = array
     .map((song)=> {
       return `
       <li id="song-${song.id}" class="playlist-song">
@@ -114,21 +121,27 @@ let userData = {
     .join("");
 
   playlistSongs.innerHTML = songsHTML;
-  };
-  const sortSongs = () => {
-    userData?.songs.sort((a,b) => {
-      if (a.title < b.title) {
-        return -1;
-      }
-  
-      if (a.title > b.title) {
-        return 1;
-      }
-  
-      return 0;
-    });
-  
-    return userData?.songs;
-  };
+};
 
-  renderSongs(sortSongs());
+playButton.addEventListener("click", () => {
+
+});
+
+const sortSongs = () => {
+  userData?.songs.sort((a,b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+
+    if (a.title > b.title) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  return userData?.songs;
+};
+
+
+renderSongs(userData?.songs);
