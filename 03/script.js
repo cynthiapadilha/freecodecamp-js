@@ -122,3 +122,5 @@ let userData = {
   
     return userData?.songs;
   };
+
+  renderSongs(sortSongs());
