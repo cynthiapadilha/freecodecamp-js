@@ -103,4 +103,7 @@ let userData = {
       </li>
       `;
     })
+    .join("");
+
+  playlistSongs.innerHTML = songsHTML;
   }
