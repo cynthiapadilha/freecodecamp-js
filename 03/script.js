@@ -138,6 +138,9 @@ playButton.addEventListener("click", () => {
     playSong(userData?.currentSong.id);
   }
 });
+const getCurrentSongIndex = () => {
+
+}
 
 pauseButton.addEventListener("click",pauseSong)
 
