@@ -8,73 +8,38 @@ const shuffleButton = document.getElementById("shuffle");
 const allSongs = [
   {
     id: 0,
-    title: "Scratching The Surface",
-    artist: "Quincy Larson",
-    duration: "4:25",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/scratching-the-surface.mp3",
+    title: "Hello World",
+    artist: "Rafael",
+    duration: "0:23",
+    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/hello-world.mp3",
   },
   {
     id: 1,
-    title: "Can't Stay Down",
-    artist: "Quincy Larson",
-    duration: "4:15",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/cant-stay-down.mp3",
+    title: "In the Zone",
+    artist: "Rafael",
+    duration: "0:11",
+    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/in-the-zone.mp3",
   },
   {
     id: 2,
-    title: "Still Learning",
-    artist: "Quincy Larson",
-    duration: "3:51",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/still-learning.mp3",
+    title: "Camper Cat",
+    artist: "Rafael",
+    duration: "0:21",
+    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/camper-cat.mp3",
   },
   {
     id: 3,
-    title: "Cruising for a Musing",
-    artist: "Quincy Larson",
-    duration: "3:34",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/cruising-for-a-musing.mp3",
+    title: "Electronic",
+    artist: "Rafael",
+    duration: "0:15",
+    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/electronic.mp3",
   },
   {
     id: 4,
-    title: "Never Not Favored",
-    artist: "Quincy Larson",
-    duration: "3:35",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/never-not-favored.mp3",
-  },
-  {
-    id: 5,
-    title: "From the Ground Up",
-    artist: "Quincy Larson",
-    duration: "3:12",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/from-the-ground-up.mp3",
-  },
-  {
-    id: 6,
-    title: "Walking on Air",
-    artist: "Quincy Larson",
-    duration: "3:25",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/walking-on-air.mp3",
-  },
-  {
-    id: 7,
-    title: "Can't Stop Me. Can't Even Slow Me Down.",
-    artist: "Quincy Larson",
-    duration: "3:52",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/cant-stop-me-cant-even-slow-me-down.mp3",
-  },
-  {
-    id: 8,
-    title: "The Surest Way Out is Through",
-    artist: "Quincy Larson",
-    duration: "3:10",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/the-surest-way-out-is-through.mp3",
-  },
-  {
-    id: 9,
-    title: "Chasing That Feeling",
-    artist: "Quincy Larson",
-    duration: "2:43",
-    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/chasing-that-feeling.mp3",
+    title: "Sailing Away",
+    artist: "Rafael",
+    duration: "0:22",
+    src: "https://s3.amazonaws.com/org.freecodecamp.mp3-player-project/sailing-away.mp3",
   },
 ];
 
@@ -160,12 +125,15 @@ const deleteSong = (id) => {
   if (userData?.songs.length === 0) {
     const resetButton = document.createElement("button");
     const resetText = document.createTextNode("Reset Playlist");
+
     resetButton.id = "reset";
     resetButton.ariaLabel = "Reset playlist";
     resetButton.appendChild(resetText);
     playlistSongs.appendChild(resetButton);
+
     resetButton.addEventListener("click", () => {
       userData.songs = [...allSongs];
+
       renderSongs(sortSongs()); 
       setPlayButtonAccessibleText();
       resetButton.remove();
@@ -247,6 +215,10 @@ previousButton.addEventListener("click", playPreviousSong);
 
 shuffleButton.addEventListener("click", shuffle);
 
+audio.addEventListener("ended", () => {
+  
+});
+
 const sortSongs = () => {
   userData?.songs.sort((a,b) => {
     if (a.title < b.title) {
@@ -264,3 +236,4 @@ const sortSongs = () => {
 };
 
 renderSongs(sortSongs());
+setPlayButtonAccessibleText();
